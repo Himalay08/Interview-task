@@ -1,6 +1,11 @@
 package com.task.serviceimpl;
 
+import java.util.List; 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -34,6 +39,13 @@ public class StudentServiceImpl implements StudentService {
 	public Student getStudentById(Integer id) {
 		// TODO Auto-generated method stub
 		return this.studentRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Student"," Id ",id));
+	}
+	@Override
+	public List<Student> getAllStudents(Integer pageSize,Integer pageNum) {
+		Pageable p=PageRequest.of(pageNum,pageSize);
+		Page<Student> pageStudent=this.studentRepository.findAll(p);
+	
+		return pageStudent.getContent();
 	}
 
 }
