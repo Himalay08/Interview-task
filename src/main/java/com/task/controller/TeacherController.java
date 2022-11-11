@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codewithhimalay.blog.payload.UserDto;
 import com.task.entity.Student;
 import com.task.service.StudentService;
 
