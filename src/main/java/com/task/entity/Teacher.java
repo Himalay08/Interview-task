@@ -35,7 +35,7 @@ public class Teacher implements UserDetails {
 	@Column(name="name",nullable = false,length = 100)
 	private String name;
 	
-	@Column(name="user_name",nullable = false,length = 100)
+	@Column(name="user_name",nullable = true,length = 100)
 	private String username;
 	
 	@Column(name="email")
@@ -54,6 +54,12 @@ public class Teacher implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.email;
 	}
 
 	@Override
